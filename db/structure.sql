@@ -36,6 +36,7 @@ CREATE TABLE `users` (
   `first_name` varchar(255) NOT NULL COMMENT 'FIRST NAME',
   `last_name` varchar(255) NOT NULL COMMENT 'LAST NAME',
   `gender` int(11) NOT NULL COMMENT '性別',
+  `email` varchar(255) NOT NULL COMMENT 'メールアドレス',
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
