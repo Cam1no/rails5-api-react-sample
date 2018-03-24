@@ -1,16 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Hello = props => (
+const Root = props => (
   <div>Hello {props.name}!</div>
 )
 
-Hello.defaultProps = {
+Root.defaultProps = {
   name: 'David'
 }
 
-Hello.propTypes = {
+Root.propTypes = {
   name: PropTypes.string
 }
 
-export default Hello;
+export default Root;

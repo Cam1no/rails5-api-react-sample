@@ -1,12 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Hello from './hello_react.jsx';
-
-console.log('Hello World from Webpacker')
+import Root from './root.jsx';
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <Hello name="React" />,
+    <Root />,
     document.body.appendChild(document.createElement('div')),
   )
-})
+});
