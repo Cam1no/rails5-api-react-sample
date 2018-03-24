@@ -1,16 +1,33 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import styled from 'styled-components';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import Routes from './Routes.jsx';
+import reducer from './reducers';
+import { createEpicMiddleware } from 'redux-observable';
+import { rootEpic } from './epics';
 
-const Root = props => (
-  <div>Hello {props.name}!</div>
-)
+const epicMiddleware = createEpicMiddleware(rootEpic);
 
-Root.defaultProps = {
-  name: 'David'
-}
+const store = createStore(reducer, applyMiddleware(epicMiddleware));
 
-Root.propTypes = {
-  name: PropTypes.string
+const RootContainer = styled.div`
+  height: 1200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
+class Root extends Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <RootContainer>
+          <Routes />
+        </RootContainer>
+      </Provider>
+    );
+  }
 }
 
 export default Root;
