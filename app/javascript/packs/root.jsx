@@ -12,7 +12,6 @@ const epicMiddleware = createEpicMiddleware(rootEpic);
 const store = createStore(reducer, applyMiddleware(epicMiddleware));
 
 const RootContainer = styled.div`
-  height: 1200px;
   display: flex;
   justify-content: center;
   align-items: center;
