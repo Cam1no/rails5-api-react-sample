@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { fetchUsers } from './actions/index';
+import { fetchUsers, deleteUser } from './actions/index';
 import { connect } from 'react-redux';
 
 const propTypes = {
@@ -21,6 +21,14 @@ class User extends Component {
       })
   }
 
+  handleDeleteButton = user_id => {
+    fetch(`/users/${user_id}`, { method: 'DELETE' })
+      .then(res => res.json())
+      .then(res => {
+        return this.props.deleteUser(user_id)
+      })
+  }
+
   componentWillMount = () => {
     this.fetchUsersFromDatabase()
   }
@@ -34,6 +42,7 @@ class User extends Component {
           <th>last_name</th>
           <th>email</th>
           <th>gender</th>
+          <th>削除</th>
         </tr>
         {
           this.props.users.map((user, i) => {
@@ -44,6 +53,7 @@ class User extends Component {
                 <td>{user.last_name}</td>
                 <td>{user.email}</td>
                 <td>{user.gender}</td>
+                <td><button onClick={() => this.handleDeleteButton(user.id)}>削除</button></td>
               </tr>
             );
           })
@@ -55,6 +65,6 @@ class User extends Component {
 
 const mapStateToProps = state => state.users
 
-export default connect(mapStateToProps, { fetchUsers })(User);
+export default connect(mapStateToProps, { fetchUsers, deleteUser })(User);
 
 User.propTypes = propTypes;
