@@ -11,6 +11,9 @@ const propTypes = {
 class User extends Component {
   constructor(props){
   	super(props);
+  	this.state = {
+      disabled: false
+    };
   }
 
   fetchUsersFromDatabase = () => {
@@ -22,9 +25,11 @@ class User extends Component {
   }
 
   handleDeleteButton = user_id => {
+    this.setState({ disabled: true })
     fetch(`/users/${user_id}`, { method: 'DELETE' })
       .then(res => res.json())
       .then(res => {
+        this.setState({ disabled: false })
         return this.props.deleteUser(user_id)
       })
   }
@@ -53,7 +58,7 @@ class User extends Component {
                 <td>{user.last_name}</td>
                 <td>{user.email}</td>
                 <td>{user.gender}</td>
-                <td><button onClick={() => this.handleDeleteButton(user.id)}>削除</button></td>
+                <td><button disabled={this.state.disabled} onClick={() => this.handleDeleteButton(user.id)}>削除</button></td>
               </tr>
             );
           })
