@@ -24,19 +24,25 @@ class User extends Component {
   }
 
   render() {
-    console.log(this.props);
     return(
-      <div>
-        <ul>
-          {
-            this.props.users.map((user, i) => {
-              return (
-                <li key={`user-${i}`}>{user.first_name}</li>
-              );
-            })
-          }
-        </ul>
-      </div>
+      <table>
+        <tr>
+          <th>first_name</th>
+          <th>last_name</th>
+          <th>email</th>
+        </tr>
+        {
+          this.props.users.map((user, i) => {
+            return (
+              <tr key={`user-${i}`}>
+                <td>{user.first_name}</td>
+                <td>{user.last_name}</td>
+                <td>{user.email}</td>
+              </tr>
+            );
+          })
+        }
+      </table>
     );
   }
 }
