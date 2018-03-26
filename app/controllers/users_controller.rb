@@ -8,4 +8,15 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     render json: :ok if user.destroy
   end
+
+  def create
+    user = User.new(
+      first_name: params[:first_name],
+      last_name: params[:last_name],
+      email: params[:email],
+      gender: params[:gender]
+    )
+    return render json: user if user.save
+    # render json: :異常系
+  end
 end
