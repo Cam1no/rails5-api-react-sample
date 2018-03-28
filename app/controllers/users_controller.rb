@@ -17,6 +17,5 @@ class UsersController < ApplicationController
       gender: params[:gender]
     )
     return render json: user if user.save
-    # render json: :異常系
   end
 end

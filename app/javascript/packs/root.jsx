@@ -5,9 +5,9 @@ import { createStore, applyMiddleware } from 'redux';
 import Routes from './Routes.jsx';
 import reducer from './reducers';
 import { createEpicMiddleware } from 'redux-observable';
-import { rootEpic } from './epics';
+import { rootEpics } from './epics';
 
-const epicMiddleware = createEpicMiddleware(rootEpic);
+const epicMiddleware = createEpicMiddleware(rootEpics);
 
 const store = createStore(reducer, applyMiddleware(epicMiddleware));
 
