@@ -14,6 +14,7 @@ gem 'mysql2', '>= 0.3.18', '< 0.5'
 gem 'puma', '~> 3.7'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker'
+gem 'slim-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
@@ -32,6 +33,9 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'factory_bot_rails'
   gem 'faker'
+  gem 'pry-rails'
+  gem 'pry-byebug'
+  gem 'pry-doc'
 end
 
 group :development do
